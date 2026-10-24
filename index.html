@@ -1,0 +1,83 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SafeHer | Women's Safety</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="safety-disclaimer" role="alert">
+  <strong>Demo Only:</strong>
+  This website does not automatically contact emergency
+  services or send SMS messages. Do not rely on this
+  prototype in a real emergency. Contact local emergency
+  services directly if you need urgent help.
+</div>
+
+  <header>
+    <div class="logo">🛡️ SafeHer</div>
+    <p>Your safety, your choice.</p>
+  </header>
+
+  <main>
+    <section class="welcome">
+      <h1>You deserve to feel safe.</h1>
+      <p>Your personal safety dashboard</p>
+    </section>
+
+    <section class="sos-card">
+      <h2>Need assistance?</h2>
+      <p>Use this demo to start an emergency assistance workflow.</p>
+      <button id="sosBtn" class="sos-btn">SOS</button>
+      <p id="sosStatus" role="status">You are in demo mode.</p>
+    </section>
+
+    <section class="cards">
+      <article class="card">
+        <h2>⏱️ Safety Check-in</h2>
+        <p>Set a timer for your journey.</p>
+        <label for="minutes">Check in after (minutes)</label>
+        <input id="minutes" type="number" min="1" max="180" value="15">
+        <button id="startTimer">Start Check-in</button>
+        <p id="timerStatus" role="status">No active check-in.</p>
+        <button id="stopTimer" class="secondary">Stop Timer</button>
+      </article>
+
+      <article class="card">
+        <h2>📍 My Location</h2>
+        <p>Share your location only when you choose to.</p>
+        <button id="locationBtn">Get My Location</button>
+        <p id="locationStatus" role="status">Location not accessed.</p>
+        <a id="mapLink" target="_blank" rel="noopener noreferrer" hidden>
+          Open location on map
+        </a>
+      </article>
+
+      <article class="card">
+        <h2>👥 Trusted Contact</h2>
+        <p>Add a contact to prepare an emergency message.</p>
+        <label for="contactName">Contact name</label>
+        <input id="contactName" type="text" placeholder="Enter name">
+        <label for="contactPhone">Phone number</label>
+        <input id="contactPhone" type="tel" placeholder="Enter phone number">
+        <button id="saveContact">Save Contact</button>
+        <p id="contactStatus" role="status">Contact not added.</p>
+        <button id="prepareAlert" class="secondary">Prepare Alert</button>
+        <textarea id="alertMessage" rows="3"
+          placeholder="Your alert message will appear here." readonly></textarea>
+      </article>
+    </section>
+
+    <p class="disclaimer">
+      Demo only: this website does not automatically contact emergency
+      services or send SMS messages. Do not rely on this prototype in a real
+      emergency. Contact local emergency services directly if you need urgent help.
+    </p>
+  </main>
+
+  <footer>SafeHer · Privacy and safety matter.</footer>
+  <script src="script.js"></script>
+</body>
+</html>

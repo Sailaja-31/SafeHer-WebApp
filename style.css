@@ -1,0 +1,222 @@
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f7f5fc;
+  color: #29233a;
+  line-height: 1.6;
+}
+
+header {
+  background: #542b83;
+  color: white;
+  padding: 20px 7%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.logo {
+  font-size: 25px;
+  font-weight: bold;
+}
+
+header p {
+  margin: 0;
+}
+
+main {
+  width: min(1100px, 92%);
+  margin: 30px auto;
+}
+
+.welcome {
+  text-align: center;
+  margin-bottom: 28px;
+}
+
+.welcome h1 {
+  color: #542b83;
+  font-size: clamp(27px, 4vw, 40px);
+}
+
+.sos-card {
+  text-align: center;
+  background: white;
+  padding: 28px;
+  border-radius: 20px;
+  box-shadow: 0 5px 22px #30205012;
+}
+
+.sos-btn {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: 7px solid #ffe0e5;
+  background: #d92748;
+  color: white;
+  font-size: 32px;
+  font-weight: bold;
+  cursor: pointer;
+  margin: 12px;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  margin-top: 24px;
+}
+
+.card {
+  background: white;
+  border-radius: 16px;
+  padding: 22px;
+  box-shadow: 0 5px 22px #30205012;
+  min-width: 0;
+}
+
+.card h2 {
+  color: #542b83;
+  font-size: 21px;
+}
+
+label {
+  display: block;
+  margin-top: 12px;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+input, textarea {
+  width: 100%;
+  margin: 6px 0 12px;
+  padding: 12px;
+  border: 1px solid #d7cee5;
+  border-radius: 8px;
+  font: inherit;
+}
+
+button {
+  border: none;
+  background: #673da0;
+  color: white;
+  padding: 12px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  margin: 5px 4px 5px 0;
+}
+
+button:hover {
+  filter: brightness(0.92);
+}
+
+.secondary {
+  background: #eee7f8;
+  color: #542b83;
+}
+
+a {
+  display: inline-block;
+  color: #542b83;
+  margin: 8px 0;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+.disclaimer {
+  background: #fff0f1;
+  color: #7d2030;
+  border-radius: 10px;
+  padding: 15px;
+  margin-top: 24px;
+  font-size: 14px;
+}
+
+footer {
+  text-align: center;
+  padding: 22px;
+  color: #675d75;
+}
+
+button:focus-visible, input:focus-visible, a:focus-visible {
+  outline: 3px solid #b89ae5;
+  outline-offset: 3px;
+}
+.safety-disclaimer {
+  background-color: #fff3cd;
+  color: #664d03;
+  border: 1px solid #ffecb5;
+  border-radius: 10px;
+  padding: 14px 16px;
+  margin: 20px 0;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* SafeHer - UI improvements */
+
+body {
+  font-family: Arial, sans-serif;
+  background: #f7f4ff;
+  color: #29243a;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  border-radius: 10px;
+  padding: 12px 18px;
+  font-size: 15px;
+  font-weight: 600;
+  transition: transform 0.2s, opacity 0.2s;
+}
+
+button:hover {
+  opacity: 0.9;
+  transform: translateY(-2px);
+}
+
+input,
+textarea {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 12px;
+  margin-top: 8px;
+  border: 1px solid #d8d0e8;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+input:focus,
+textarea:focus {
+  outline: 2px solid #9b78dc;
+  border-color: transparent;
+}
+.safety-disclaimer {
+  background: #fff3cd;
+  color: #664d03;
+  border: 1px solid #ffecb5;
+  border-radius: 10px;
+  padding: 14px;
+  line-height: 1.6;
+}
+
+@media (max-width: 600px) {
+  body {
+    padding: 12px;
+  }
+
+  button {
+    width: 100%;
+    margin-bottom: 8px;
+  }
+}
