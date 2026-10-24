@@ -5,79 +5,180 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SafeHer | Women's Safety</title>
-  <link rel="stylesheet" href="style.css">
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f7f4ff;
+      color: #29243a;
+    }
+
+    header {
+      background: #673ab7;
+      color: white;
+      text-align: center;
+      padding: 25px 16px;
+    }
+
+    header h1 { margin: 0 0 8px; }
+    header p { margin: 0; }
+
+    main {
+      width: min(950px, 92%);
+      margin: 25px auto;
+    }
+
+    .card {
+      background: white;
+      padding: 22px;
+      margin-bottom: 18px;
+      border-radius: 16px;
+      box-shadow: 0 4px 16px #33225512;
+    }
+
+    h2 { margin-top: 0; color: #673ab7; }
+
+    button {
+      border: 0;
+      border-radius: 9px;
+      padding: 12px 16px;
+      margin: 5px 4px 5px 0;
+      font-size: 15px;
+      font-weight: bold;
+      cursor: pointer;
+      background: #673ab7;
+      color: white;
+    }
+
+    button:hover { opacity: .88; }
+    .sos { background: #c62828; }
+    .stop { background: #555; }
+    .secondary { background: #eee7fa; color: #4a2785; }
+
+    input {
+      width: 100%;
+      padding: 12px;
+      margin: 7px 0 12px;
+      border: 1px solid #d8cfe8;
+      border-radius: 8px;
+      font-size: 15px;
+    }
+
+    .status {
+      padding: 12px;
+      border-radius: 8px;
+      background: #f3effa;
+      overflow-wrap: anywhere;
+    }
+
+    .warning {
+      background: #fff3cd;
+      color: #664d03;
+      padding: 15px;
+      border-radius: 10px;
+      line-height: 1.6;
+      border: 1px solid #ffecb5;
+    }
+
+    .muted { color: #686273; font-size: 14px; }
+    .value { font-weight: bold; overflow-wrap: anywhere; }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      color: #686273;
+      font-size: 13px;
+    }
+
+    @media (max-width: 600px) {
+      main { width: 94%; }
+      .card { padding: 17px; }
+      button { max-width: 100%; }
+    }
+  </style>
 </head>
 <body>
-<div class="safety-disclaimer" role="alert">
-  <strong>Demo Only:</strong>
-  This website does not automatically contact emergency
-  services or send SMS messages. Do not rely on this
-  prototype in a real emergency. Contact local emergency
-  services directly if you need urgent help.
-</div>
-
   <header>
-    <div class="logo">🛡️ SafeHer</div>
-    <p>Your safety, your choice.</p>
+    <h1>🛡️ SafeHer</h1>
+    <p>Your personal safety and journey check-in companion</p>
   </header>
 
   <main>
-    <section class="welcome">
-      <h1>You deserve to feel safe.</h1>
-      <p>Your personal safety dashboard</p>
+    <section class="card">
+      <h2>Emergency SOS</h2>
+      <p>If you feel unsafe, use this demo button to display the safety alert.</p>
+      <button class="sos" id="sosButton">SOS — Emergency Demo</button>
+      <p id="sosStatus" class="status" role="status">
+        SOS demo is ready.
+      </p>
     </section>
 
-    <section class="sos-card">
-      <h2>Need assistance?</h2>
-      <p>Use this demo to start an emergency assistance workflow.</p>
-      <button id="sosBtn" class="sos-btn">SOS</button>
-      <p id="sosStatus" role="status">You are in demo mode.</p>
+    <section class="card">
+      <h2>📍 Live Location Tracking</h2>
+      <p>Allow location permission to see your device's location updates.</p>
+      <p class="muted">Tracking works while this page is open and the browser provides location updates.</p>
+
+      <p id="trackingStatus" class="status" role="status">
+        Tracking has not started.
+      </p>
+
+      <p>Latitude: <span class="value" id="latitude">--</span></p>
+      <p>Longitude: <span class="value" id="longitude">--</span></p>
+      <p>Accuracy: <span class="value" id="accuracy">--</span></p>
+      <p>Last updated: <span class="value" id="lastUpdated">--</span></p>
+
+      <button id="startTracking">Start Live Tracking</button>
+      <button id="stopTracking" class="stop">Stop Tracking</button>
     </section>
 
-    <section class="cards">
-      <article class="card">
-        <h2>⏱️ Safety Check-in</h2>
-        <p>Set a timer for your journey.</p>
-        <label for="minutes">Check in after (minutes)</label>
-        <input id="minutes" type="number" min="1" max="180" value="15">
-        <button id="startTimer">Start Check-in</button>
-        <p id="timerStatus" role="status">No active check-in.</p>
-        <button id="stopTimer" class="secondary">Stop Timer</button>
-      </article>
+    <section class="card">
+      <h2>⏱️ Journey Check-in</h2>
+      <p>Start a demo timer for your journey. This timer does not contact anyone.</p>
 
-      <article class="card">
-        <h2>📍 My Location</h2>
-        <p>Share your location only when you choose to.</p>
-        <button id="locationBtn">Get My Location</button>
-        <p id="locationStatus" role="status">Location not accessed.</p>
-        <a id="mapLink" target="_blank" rel="noopener noreferrer" hidden>
-          Open location on map
-        </a>
-      </article>
+      <label for="minutes">Check-in duration (minutes)</label>
+      <input id="minutes" type="number" min="1" max="180" value="5">
 
-      <article class="card">
-        <h2>👥 Trusted Contact</h2>
-        <p>Add a contact to prepare an emergency message.</p>
-        <label for="contactName">Contact name</label>
-        <input id="contactName" type="text" placeholder="Enter name">
-        <label for="contactPhone">Phone number</label>
-        <input id="contactPhone" type="tel" placeholder="Enter phone number">
-        <button id="saveContact">Save Contact</button>
-        <p id="contactStatus" role="status">Contact not added.</p>
-        <button id="prepareAlert" class="secondary">Prepare Alert</button>
-        <textarea id="alertMessage" rows="3"
-          placeholder="Your alert message will appear here." readonly></textarea>
-      </article>
+      <p id="timerDisplay" class="status">Timer not started.</p>
+      <button id="startTimer">Start Check-in</button>
+      <button id="stopTimer" class="secondary">Stop Timer</button>
     </section>
 
-    <p class="disclaimer">
-      Demo only: this website does not automatically contact emergency
-      services or send SMS messages. Do not rely on this prototype in a real
+    <section class="card">
+      <h2>👤 Trusted Contact</h2>
+      <p class="muted">Demo only: these details stay in this browser. No message will be sent.</p>
+
+      <label for="contactName">Contact name</label>
+      <input id="contactName" type="text" placeholder="Enter trusted contact name">
+
+      <label for="contactPhone">Contact phone number</label>
+      <input id="contactPhone" type="tel" placeholder="Enter phone number">
+
+      <button id="saveContact">Save Contact</button>
+      <p id="contactStatus" class="status" role="status">
+        No contact saved yet.
+      </p>
+    </section>
+
+    <section class="card">
+      <h2>Safety Alert Message</h2>
+      <p>You can prepare a message to copy and share yourself.</p>
+      <textarea id="alertMessage" rows="4" style="width:100%;padding:12px;border:1px solid #d8cfe8;border-radius:8px;" readonly>I'm checking in because I may need assistance. Please contact me to confirm that I'm safe.</textarea>
+      <button id="copyMessage">Copy Message</button>
+      <p id="messageStatus" class="muted" role="status"></p>
+    </section>
+
+    <section class="warning">
+      <strong>Demo only:</strong> This website does not automatically contact
+      emergency services or send SMS messages. Location is not automatically
+      shared with trusted contacts. Do not rely on this prototype in a real
       emergency. Contact local emergency services directly if you need urgent help.
-    </p>
+    </section>
   </main>
 
-  <footer>SafeHer · Privacy and safety matter.</footer>
+  <footer>SafeHer · Women's Safety Web App · Prototype</footer>
+
   <script src="script.js"></script>
 </body>
 </html>
