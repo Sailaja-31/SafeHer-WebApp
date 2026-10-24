@@ -1,4 +1,4 @@
-
+alert("SafeHer JavaScript loaded!");
 const sosBtn = document.getElementById("sosBtn");
 const sosStatus = document.getElementById("sosStatus");
 
